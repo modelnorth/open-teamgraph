@@ -1,0 +1,33 @@
+{
+  "name": "@modelnorth/open-teamgraph",
+  "version": "0.1.0",
+  "description": "Open-source, bi-temporal, agent-native knowledge graph of engineering teamwork",
+  "author": "Model North <contact@modelnorth.com> (https://modelnorth.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/modelnorth/open-teamgraph",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modelnorth/open-teamgraph.git"
+  },
+  "type": "module",
+  "bin": {
+    "teamgraph": "./packages/cli/src/cli.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "bun test",
+    "mcp": "bun run packages/mcp-server/src/server.ts",
+    "cli": "bun run packages/cli/src/cli.ts",
+    "gateway": "bun run packages/cli/src/cli.ts gateway",
+    "sync": "bun run packages/cli/src/cli.ts sync"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "zod": "^3.24.1"
+  }
+}

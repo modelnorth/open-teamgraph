@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: apache/age:PG16_latest
+    container_name: teamgraph-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: teamgraph
+      POSTGRES_PASSWORD: teamgraph_secret
+      POSTGRES_DB: teamgraph_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - teamgraph_pgdata:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U teamgraph -d teamgraph_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nats:
+    image: nats:latest
+    container_name: teamgraph-nats
+    restart: unless-stopped
+    command: ["-js", "-m", "8222"]
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+
+  mcp-server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: open-teamgraph-mcp
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: "postgresql://teamgraph:teamgraph_secret@postgres:5432/teamgraph_db"
+      NATS_URL: "nats://nats:4222"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  teamgraph_pgdata:
