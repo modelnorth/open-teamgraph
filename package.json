@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Open-source, bi-temporal, agent-native knowledge graph of engineering teamwork",
   "author": "Model North <contact@modelnorth.com> (https://modelnorth.com)",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/modelnorth/open-teamgraph",
   "repository": {
     "type": "git",

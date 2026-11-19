@@ -73,7 +73,7 @@ flowchart TD
 
 | Capability | Atlassian TWG | Faros CE | Apache DevLake | Spotify Backstage | **Open TeamGraph** |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Open Source** | ❌ | ⚠️ (Open Core) | ✅ | ✅ | 🟢 **100% MIT** |
+| **Open Source** | ❌ | ⚠️ (Open Core) | ✅ | ✅ | 🟢 **100% Apache 2.0** |
 | **Self-Hostable / Air-Gapped** | ❌ (Cloud only) | ⚠️ (Complex) | ✅ | ✅ | 🟢 **Zero external deps** |
 | **AI Agent First (MCP Server)**| ❌ (Rovo only) | ❌ | ❌ | ❌ | 🟢 **Native MCP** |
 | **Linear + Slack + Git Ingestion**| Jira/Bitbucket | Batch ETL | Batch ETL | Static YAML | 🟢 **Event-driven** |
@@ -156,4 +156,4 @@ bun run packages/cli/src/cli.ts audit --files "src/auth/jwt.ts,src/gateways/stri
 ---
 
 ## 📄 License
-MIT License. Created for the open-source engineering intelligence community.
+Apache 2.0 License. Copyright 2026 Model North. Created for the open-source engineering intelligence community.
